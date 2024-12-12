@@ -91,7 +91,7 @@ services:
     - Python (>= 3.x).
     - A message broker (e.g., RabbitMQ, Redis).
 - <b>Installation Steps</b>
-```typescript
+```bash
 pip install celery[redis]
 ```
 <b>3. Key Concepts</b>
@@ -139,7 +139,7 @@ print(result.get())  # Output: 10
 pip install celery[redis]
 ```
 - <b>Add a Periodic Task Modify ```celery.py```:</b>
-```pyhton
+```typescript
 from celery import Celery
 from celery.schedules import crontab
 
@@ -156,7 +156,7 @@ def test(arg):
 ```
 
 - <b>Start the Scheduler</b>
-```bash
+```typescript
 celery -A tasks beat --loglevel=info
 ```
 <b>7. Configuration</b>
@@ -180,5 +180,5 @@ celery -A tasks flower
 
 - <b>Common Debugging Tips:</b>
     - Check broker status.
-    - Verify worker logs (--loglevel=debug).
+    - Verify worker logs (```--loglevel=debug```).
 
