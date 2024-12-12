@@ -1,5 +1,4 @@
-### Guide
-
+### Guide to Docker
 
 <b>1. Introduction</b>
 - <b>What is Docker?</b>
@@ -77,3 +76,26 @@ services:
 - Tag images with meaningful names and versions.
 - Regularly clean up unused images, containers, and volumes.
 
+
+### Guide to Celery
+<b>1. Introduction</b>
+- <b>What is Celery?</b>
+> Celery is an asynchronous task queue/job queue based on distributed message passing.
+- <b>Why Use Celery?</b>
+    - Efficient background task execution.
+    - Supports scheduling.
+    - Works well with various message brokers like RabbitMQ, Redis, etc.
+
+<b>2. Installation</b>
+- <b>Prerequisites</b>
+    - Python (>= 3.x).
+    - A message broker (e.g., RabbitMQ, Redis).
+- <b>Installation Steps</b>
+```typescript
+pip install celery[redis]
+```
+<b>3. Key Concepts</b>
+- <b>Tasks:</b> Units of work to be executed.
+- <b>Workers:</b> Processes that execute tasks.
+- <b>Brokers:</b> Middlemen that queue tasks (e.g., Redis, RabbitMQ).
+- <b>Results Backend:</b> Stores the results of tasks.
