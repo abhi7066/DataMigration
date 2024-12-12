@@ -15,17 +15,17 @@
 
 <b>3. Common Commands</b>
 - <b>Basic Commands</b>
-```docker pull <image>```: Download an image.
-```docker run <image>```: Run a container.
-```docker ps```: List running containers.
-```docker stop <container_id>```: Stop a running container.
-```docker rm <container_id>```: Remove a container.
-```docker images```: List downloaded images.
-```docker rmi <image>```: Remove an image.
+    - ```docker pull <image>```: Download an image.
+    - ```docker run <image>```: Run a container.
+    - ```docker ps```: List running containers.
+    - ```docker stop <container_id>```: Stop a running container.
+    - ```docker rm <container_id>```: Remove a container.
+    - ```docker images```: List downloaded images.
+    - ```docker rmi <image>```: Remove an image.
 - <b>Advanced Commands</b>
-```docker-compose up```: Start services defined in docker-compose.yml.
-```docker build```: Build an image from a Dockerfile.
-```docker exec```: Run commands inside a running container.
+    - ```docker-compose up```: Start services defined in docker-compose.yml.
+    - ```docker build```: Build an image from a Dockerfile.
+    - ```docker exec```: Run commands inside a running container.
 
 <b>4. Creating a Dockerfile</b>
 - What is a Dockerfile?
