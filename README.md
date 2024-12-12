@@ -99,3 +99,36 @@ pip install celery[redis]
 - <b>Workers:</b> Processes that execute tasks.
 - <b>Brokers:</b> Middlemen that queue tasks (e.g., Redis, RabbitMQ).
 - <b>Results Backend:</b> Stores the results of tasks.
+
+<b>4. Setting Up Celery</b>
+- <b>Basic Project Structure</b>
+```
+project/
+├── tasks.py
+├── worker.py
+└── requirements.txt
+```
+
+- <b>Creating a Simple Celery App (```tasks.py```)</b>
+```python
+from celery import Celery
+
+app = Celery('tasks', broker='redis://localhost:6379/0')
+
+@app.task
+def add(x, y):
+    return x + y
+```
+
+<b>5. Running Celery</b>
+- <b>Start the Worker</b>
+```typescript
+celery -A tasks worker --loglevel=info
+```
+- <b>Call Tasks</b>
+```python
+from tasks import add
+
+result = add.delay(4, 6)
+print(result.get())  # Output: 10
+```
