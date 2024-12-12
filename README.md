@@ -132,3 +132,53 @@ from tasks import add
 result = add.delay(4, 6)
 print(result.get())  # Output: 10
 ```
+
+<b>6. Scheduling Tasks</b>
+- <b>Installing the Scheduler</b>
+```bash
+pip install celery[redis]
+```
+- <b>Add a Periodic Task Modify ```celery.py```:</b>
+```pyhton
+from celery import Celery
+from celery.schedules import crontab
+
+app = Celery('tasks', broker='redis://localhost:6379/0')
+
+@app.on_after_configure.connect
+def setup_periodic_tasks(sender, **kwargs):
+    sender.add_periodic_task(10.0, test.s('hello'), name='Add every 10 seconds')
+    sender.add_periodic_task(crontab(hour=7, minute=30), test.s('morning!'))
+
+@app.task
+def test(arg):
+    print(arg)
+```
+
+- <b>Start the Scheduler</b>
+```bash
+celery -A tasks beat --loglevel=info
+```
+<b>7. Configuration</b>
+- <b>Add a ```celeryconfig.py``` file for custom settings:</b>
+```python
+broker_url = 'redis://localhost:6379/0'
+result_backend = 'redis://localhost:6379/0'
+task_serializer = 'json'
+result_serializer = 'json'
+accept_content = ['json']
+timezone = 'UTC'
+enable_utc = True
+```
+
+<b>8. Monitoring and Debugging</b>
+- <b>Flower: Celery monitoring tool.</b>
+```bash
+pip install flower
+celery -A tasks flower
+```
+
+- <b>Common Debugging Tips:</b>
+    - Check broker status.
+    - Verify worker logs (--loglevel=debug).
+
